@@ -1,0 +1,10 @@
+{
+	"receivedObjects": "Received Objects",
+	"clone_description": "Clones a remote branch to your local machine",
+	"push_description": "Pushes local commits to the remote branch",
+	"pull_description": "Creates a new pull request",
+	"log_description": "Prints out a list of git commits",
+	"add_description": "Adds a file to staging",
+	"all_option": "all_option",
+	"status_description": "status_description"
+}

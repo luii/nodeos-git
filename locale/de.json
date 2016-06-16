@@ -1,0 +1,12 @@
+{
+  "all_option": "Änderungen von allen versionierten und unversionierten Dateien hinzufügen",
+
+  "receivedObjects": "Empfange Objekte",
+
+  "add_description": "Verschiebt eine Datei in den Staging bereich",
+  "log_description": "Gibt eine Liste von Commits aus",
+  "pull_description": "Erstellt eine neue Pull Anfrage",
+  "push_description": "Lädt lokale Änderungen an einen enfernten Branch hoch",
+  "clone_description": "Klont eine Repository",
+  "status_description": "Zeigt den Zustand des Arbeitsverzeichnisses an"
+}
