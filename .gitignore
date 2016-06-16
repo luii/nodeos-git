@@ -1,0 +1,46 @@
+############################
+# npm
+############################
+
+node_modules
+npm-debug.log
+
+############################
+# tmp, editor & OS files
+############################
+
+.tmp
+*.swo
+*.swp
+*.swn
+*.swm
+*.coffee
+*.test.coffee
+.DS_STORE
+*#
+*~
+.idea
+*.bak
+*.todo
+nbproject
+
+############################
+# tests
+############################
+
+testApp
+coverage
+
+############################
+# other
+############################
+
+.unused
+.out
+.node_history
+.editorconfig
+*.sublime-project
+*.sublime-workspace
+.remote-sync.json
+.tern-project
+.nvmrc
