@@ -16,6 +16,7 @@ i18n.configure({
 })
 
 // binaries
+const commit = require('./commit')
 const status = require('./status')
 const clone  = require('./clone')
 const add    = require('./add')
@@ -51,6 +52,12 @@ program
   .option('-A, --all', __('all_option'))
   .description(__('add_description'))
   .action(add)
+
+program
+  .command('commit')
+  .option('-S --gpg-sign', __('gpg-sign_option'))
+  .description(__('commit_description'))
+  .action(commit)
 
 program
   .version(pkg.version)
