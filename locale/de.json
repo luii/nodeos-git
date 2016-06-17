@@ -1,12 +1,14 @@
 {
   "all_option": "Änderungen von allen versionierten und unversionierten Dateien hinzufügen",
+  "gpg-sign_option": "Commit mit GPG signieren",
 
   "receivedObjects": "Empfange Objekte",
 
-  "add_description": "Verschiebt eine Datei in den Staging bereich",
-  "log_description": "Gibt eine Liste von Commits aus",
-  "pull_description": "Erstellt eine neue Pull Anfrage",
-  "push_description": "Lädt lokale Änderungen an einen enfernten Branch hoch",
-  "clone_description": "Klont eine Repository",
-  "status_description": "Zeigt den Zustand des Arbeitsverzeichnisses an"
+  "add_description": "Dateiinhalte zum Commit vormerken",
+  "log_description": "Commit-Historie anzeigen",
+  "push_description": "Remote-Referenzen mitsamt den verbundenen Objekten aktualisieren",
+  "pull_description": "Objekte von einem externen Repository anfordern und sie mit einem anderen Repository oder einem lokalen Branch zusammenführen",
+  "clone_description": "Eine Repository in einem neuen Verzeichnis klonen",
+  "status_description": "Zeigt den Zustand des Arbeitsverzeichnisses an",
+  "commit_description": "Änderungen in das Repository eintragen"
 }
