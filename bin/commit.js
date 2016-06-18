@@ -35,9 +35,9 @@ module.exports = (option) => {
     let author = Signature.now("Philipp Czarnetzki", "filli6@web.de")
     let committer = Signature.now("Philipp Czarnetzki", "filli6@web.de")
     let message = `${option.message}\r\n`
-    let description = `${option.description}\r\n`
 
-    if (option.description) {
+    if (option.desc) {
+      let description = `${option.desc}\r\n`
       message = `${message}\r\n${description}`
     }
 
