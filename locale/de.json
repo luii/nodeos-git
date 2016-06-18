@@ -1,6 +1,8 @@
 {
   "all_option": "Änderungen von allen versionierten und unversionierten Dateien hinzufügen",
   "gpg-sign_option": "Commit mit GPG signieren",
+  "message_option": "Commit Titel",
+  "description_option": "Commit Beschreibung",
 
   "receivedObjects": "Empfange Objekte",
 

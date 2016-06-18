@@ -1,6 +1,8 @@
 {
 	"all_option": "all_option",
 	"gpg-sign_option": "Sign a commit with gpg",
+	"message_option": "Commit title",
+  "description_option": "Commit description",
 
 	"receivedObjects": "Received Objects",
 
