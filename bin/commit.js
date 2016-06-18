@@ -35,7 +35,12 @@ module.exports = (option) => {
     let author = Signature.now("Philipp Czarnetzki", "filli6@web.de")
     let committer = Signature.now("Philipp Czarnetzki", "filli6@web.de")
     let message = `${option.message}\r\n`
-    
+    let description = `${option.description}\r\n`
+
+    if (option.description) {
+      message = `${message}\r\n${description}`
+    }
+
     return repo.createCommit("HEAD", author, committer, message, oid, [parent]);
   }).catch(console.log.bind(console))
 }
