@@ -56,7 +56,8 @@ program
 program
   .command('commit')
   .option('-S, --gpg-sign', __('gpg-sign_option'))
-  .option('-m, --message', __('message_option'))
+  .option('-m, --message <message>', __('message_option'))
+  .option('-d, --description <description>', __('description_option'))
   .description(__('commit_description'))
   .action(commit)
 
