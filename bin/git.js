@@ -9,7 +9,7 @@ const path = require('path')
 const program = require('commander')
 
 i18n.configure({
-  locales: [ 'en', 'de' ],
+  locales: [ 'en', 'de', 'fr' ],
   directory: path.resolve(__dirname, '..', 'locale'),
   defaultLocale: rc.locale,
   register: global

@@ -1,0 +1,10 @@
+{
+	"receivedObjects": "Objects Reçu",
+	"clone_description": "Copy une branche externe à votre machine",
+	"push_description": "Poussez des commits locaux au branche externe",
+	"pull_description": "Créer une demande pour tirer une branche",
+	"log_description": "Present une liste de commits",
+	"add_description": "Marquer un fichier prêt à commettre",
+	"all_option": "Ajouter des changements de tous les fichiers versionnés et non-versionnés",
+	"status_description": "Affiche l'état du répertoire"
+}
