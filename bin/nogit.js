@@ -14,6 +14,7 @@ cli.commandDir('remote')
    .commandDir('checkout')
    .commandDir('config')
    .commandDir('status')
+   .commandDir('add')
    .help().argv
 
 // program
