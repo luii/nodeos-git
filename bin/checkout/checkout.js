@@ -3,13 +3,7 @@
 'use strict'
 
 // Dependencies
-const git = require('nodegit')
-const path = require('path')
-
-const Oid = git.Oid
-const Branch = git.Branch
-const Checkout = git.Checkout
-const Repository = git.Repository
+const nogit = require('../../lib')
 
 /**
  * The command format itself
@@ -39,20 +33,11 @@ exports.builder = {}
  * @param  {Object} argv Contains the arguments that was passed
  * @return {Void}        Returns nothing
  */
-exports.handler = function (argv) {
-  let gitFolder = path.join(process.cwd(), '/.git')
-  let branch = argv.branch
+exports.handler = (argv) => {
 
-  Repository.open(gitFolder).then(repo => {
-    if (/[a-zA-Z0-9]|master|HEAD(![^0-9]+)?/.test(branch)) {
-      return repo.checkoutBranch(branch)
-    }
-
-    let oid = Oid.fromString(branch)
-    return repo.setHeadDetached(oid)
-  }).then((names) => {
-    console.log('Switched to:', branch);
-  }).catch(console.log.bind(console))
-
-  return
+  nogit.checkout(argv.branch)
+    .catch(() => console.log.bind(console))
+    .done(branch => {
+      console.log(`Checkout ${branch}`);
+    })
 }
