@@ -47,7 +47,6 @@ exports.handler = function (argv) {
     index = newIndex
     let arr = []
 
-    console.log(argv);
     for (let file of argv.files) {
       arr.push(index.addByPath(file))
     }
