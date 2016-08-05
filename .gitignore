@@ -44,3 +44,4 @@ coverage
 .remote-sync.json
 .tern-project
 .nvmrc
+*.todo
