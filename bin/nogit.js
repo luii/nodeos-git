@@ -13,6 +13,7 @@ cli.commandDir('remote')
    .commandDir('clone')
    .commandDir('checkout')
    .commandDir('config')
+   .commandDir('status')
    .help().argv
 
 // program
