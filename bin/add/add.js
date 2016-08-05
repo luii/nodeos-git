@@ -3,13 +3,7 @@
 'use strict'
 
 // Dependencies
-const ncp = require('ncp')
-const git = require('nodegit')
-const path = require('path')
-
-const Clone = git.Clone
-const Remote = git.Remote
-const Repository = git.Repository
+const nogit = require('../../lib')
 
 /**
  * The command format itself
@@ -37,27 +31,9 @@ exports.builder = {
  * @return {Void}        Returns nothing to end the function
  */
 exports.handler = function (argv) {
-  let gitFolder = path.join(process.cwd(), '/.git')
-  let repo, index
-
-  Repository.open(gitFolder).then(repository => {
-    repo = repository
-    return repo.refreshIndex()
-  }).then(newIndex => {
-    index = newIndex
-    let arr = []
-
-    for (let file of argv.files) {
-      arr.push(index.addByPath(file))
-    }
-
-    return Promise.all(arr)
-  }).then(() => {
-    return index.write()
-  }).then(() => {
-    return index.writeTree()
-  }).catch(() => console.log.bind(console)).done(() => {
-    console.log(`Added ${argv.files}`);
-
-  })
+  nogit.add(argv.files)
+       .catch(() => console.log.bind(console))
+       .done(files => {
+         console.log(`Added ${files.join(' ')}`);
+       })
 }
