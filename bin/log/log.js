@@ -1,12 +1,6 @@
 'use strict'
 
-const git = require('nodegit')
-const path = require('path')
-const chalk = require('chalk')
-
-const bold = chalk.bold
-const yellow = chalk.yellow
-const Repository = git.Repository
+const nogit = require('../../lib')
 
 /**
  * The command format itself
