@@ -3,10 +3,7 @@
 'use strict'
 
 // Dependencies
-const git = require('nodegit')
-const path = require('path')
-
-const Repository = git.Repository
+const nogit = require('../../lib')
 
 /**
  * The command format itself
@@ -42,15 +39,8 @@ exports.builder = {
  * @return {Void}        Returns nothing
  */
 exports.handler = function (argv) {
-  let gitFolder = path.join(process.cwd(), '/.git')
-  let get = argv.get
 
-  Repository.open(gitFolder).then(repo => {
-    return repo.config();
-  }).then(config => {
-    return config.getString(get);
-  }).then(value => {
-    console.log(value);
-  }).catch(console.log.bind(console))
-  return
+  nogit.config(argv)
+    .catch(console.log.bind(console))
+    .done(val => console.log)
 }
