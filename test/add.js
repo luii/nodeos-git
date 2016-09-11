@@ -1,31 +1,56 @@
 /* eslint-env mocha */
 'use strict'
 
+const fs = require('fs')
+const strictEqual = require('assert').strictEqual
 
-const nogit = require('../lib')
-const nodegit = require('nodegit')
-const chai = require('chai')
-const should = chai.should()
+const extract = require('tar-fs').extract
+const gunzip = require('gunzip-maybe')
+const tmp = require('tmp')
 
-chai.use(require('chai-as-promised'))
-chai.use(require('sinon-chai'))
+const add = require('..').add
 
-const sinon = require('sinon')
-const sap = require('sinon-as-promised')
 
-describe('Nogit', () => {
+tmp.setGracefulCleanup()
 
-  describe('.add', () => {
-    it('should exist', () => nogit.add.should.exist)
-    it('should be defined', () => nogit.add.should.not.be.undefined)
-    it('should be a function', () => nogit.add.should.be.a('function'))
-    it('should add a file to staging', sinon.test(() => {
-      let params = [ 'lib/index.js' ]
 
-      nogit.add(params)
-        .then((files) => {
-          params.should.deep.equal(files)
-        }).catch(console.log.bind(console))
-    }))
+describe('add', function()
+{
+  var cwd
+  var cleanupCallback
+
+
+  beforeEach(function(done)
+  {
+    tmp.dir({unsafeCleanup: true}, function(err, path, _cleanupCallback)
+    {
+      if(err) return done(err)
+
+      cwd = path
+      cleanupCallback = _cleanupCallback
+
+      fs.createReadStream(__dirname+'/fixtures/add.tar.gz')
+      .pipe(gunzip()).pipe(extract(path)).on('finish', done)
+    })
+  })
+
+  afterEach(function(done)
+  {
+    cleanupCallback()
+    done()
+  })
+
+
+  it('add a file to staging', function(done)
+  {
+    const expected = ['README.md']
+
+    add(expected, {cwd})
+    .then(function(files)
+    {
+      strictEqual(files, expected)
+
+      done()
+    }, done)
   })
 })
