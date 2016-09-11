@@ -1,38 +1,85 @@
 /* eslint-env mocha */
 'use strict'
 
+const fs = require('fs')
+const strictEqual = require('assert').strictEqual
 
-const nodegit = require('nodegit')
-const nogit = require('../lib')
-const chai = require('chai')
-const should = chai.should()
+const extract = require('tar-fs').extract
+const gunzip = require('gunzip-maybe')
+const tmp = require('tmp')
 
-chai.use(require('chai-as-promised'))
-chai.use(require('sinon-chai'))
+const checkout = require('..').checkout
 
-const sinon = require('sinon')
-const sap = require('sinon-as-promised')
 
-describe('Nogit', () => {
-  describe('.checkout', () => {
-    it('should exist', () => nogit.checkout.should.exist)
-    it('should be defined', () => nogit.checkout.should.not.be.undefined)
-    it('should be a function', () => nogit.checkout.should.be.a('function'))
-    it('should checkout the master branch', () => {
-      let checkoutBranch = 'master'
+tmp.setGracefulCleanup()
 
-      nogit.checkout(checkoutBranch)
-        .then((branch) => {
-          branch.should.equal(checkoutBranch)
-        })
+
+describe('checkout', function()
+{
+  var cwd
+  var cleanupCallback
+
+
+  beforeEach(function(done)
+  {
+    tmp.dir({unsafeCleanup: true}, function(err, path, _cleanupCallback)
+    {
+      if(err) return done(err)
+
+      cwd = path+'/checkout'
+      cleanupCallback = _cleanupCallback
+
+      fs.createReadStream(__dirname+'/fixtures/checkout.tar.gz')
+      .pipe(gunzip()).pipe(extract(path)).on('finish', done)
     })
-    it('should checkout commit and be in detached head mode', () => {
-      let checkoutDetached = 'c8ad7c9813f05cb01569c850c0cf4e6bdf971edf'
+  })
 
-      nogit.checkout(checkoutDetached)
-        .then((branch) => {
-          branch.should.equal(checkoutDetached)
-        })
-    })
+  afterEach(function(done)
+  {
+    cleanupCallback()
+    done()
+  })
+
+
+  it('master branch', function(done)
+  {
+    const checkoutBranch = 'master'
+    const expected = "Can't get you out of my head\n"
+
+    checkout(checkoutBranch, {cwd})
+    .then(function(branch)
+    {
+      strictEqual(branch, checkoutBranch)
+
+      fs.readFile(cwd+'/README.md', 'utf8', function(error, data)
+      {
+        if(error) return done(error)
+
+        strictEqual(data, expected)
+
+        done()
+      })
+    }, done)
+  })
+
+  it('commit and be in detached head mode', function(done)
+  {
+    const checkoutDetached = 'fd8a3c2992a06a760287fe5c4eb9edd5a2580765'
+    const expected = 'Hello Git! :-)\n'
+
+    checkout(checkoutDetached, {cwd})
+    .then(function(branch)
+    {
+      strictEqual(branch, checkoutDetached)
+
+      fs.readFile(cwd+'/README.md', 'utf8', function(error, data)
+      {
+        if(error) return done(error)
+
+        strictEqual(data, expected)
+
+        done()
+      })
+    }, done)
   })
 })

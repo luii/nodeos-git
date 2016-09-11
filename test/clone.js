@@ -63,7 +63,7 @@ describe('Nogit', () => {
 
     it('should just clone the repository if no flag is set', () => {
       nogit.clone(cloneRepository, `${fixtureDir}/clone`)
-        .then((repsoitory) => {
+        .then((repository) => {
 
         }).catch(console.log.bind(console))
     })
