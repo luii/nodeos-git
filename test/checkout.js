@@ -26,7 +26,7 @@ describe('checkout', function()
     {
       if(err) return done(err)
 
-      cwd = path+'/checkout'
+      cwd = path
       cleanupCallback = _cleanupCallback
 
       fs.createReadStream(__dirname+'/fixtures/checkout.tar.gz')
