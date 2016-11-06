@@ -1,5 +1,5 @@
 {
-  "name": "nogit",
+  "name": "nodeos-git",
   "version": "0.3.0",
   "description": "NodeOS git client",
   "main": "lib",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luii/nogit.git"
+    "url": "git+https://github.com/luii/nodeos-git.git"
   },
   "keywords": [
     "git",
@@ -19,9 +19,9 @@
   "author": "luii",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luii/nogit/issues"
+    "url": "https://github.com/luii/nodeos-git/issues"
   },
-  "homepage": "https://github.com/luii/nogit#readme",
+  "homepage": "https://github.com/luii/nodeos-git#readme",
   "dependencies": {
     "chalk": "^1.1.3",
     "fs-promise": "^0.5.0",
