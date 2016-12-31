@@ -4,6 +4,7 @@
   "description": "NodeOS git client",
   "main": "lib",
   "bin": "bin/nogit.js",
+  "preferGlobal": true,
   "scripts": {
     "coveralls": "easy-coveralls",
     "test": "mocha"
