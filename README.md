@@ -29,6 +29,10 @@ $ npm i -g nodeos-git
 $ npm i -S nodeos-git
 ```
 
+**You can also install the next version for
+[nodeos-git](https://github.com/luii/nodeos-git/tree/async/await)
+which provides `async/await` support**
+
 ## Usage
 ```js
 const git = require('nodeos-git')
