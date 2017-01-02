@@ -1,6 +1,6 @@
 {
   "name": "nodeos-git",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "NodeOS git client",
   "main": "lib",
   "bin": "bin/nogit.js",
