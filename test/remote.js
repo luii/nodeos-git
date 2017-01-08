@@ -72,9 +72,11 @@ describe('remote', () => {
     it('should exist', () => {
       remote.add.should.exist
     })
+
     it('should be defined', () => {
       remote.add.should.not.be.undefined
     })
+
     it('should be a function', () => {
       remote.add.should.be.a('function')
     })
@@ -102,7 +104,7 @@ describe('remote', () => {
     // track option
     it('should only track a branch when the track option is set', done => {
       git.remote.add(cwd, remoteName, remoteUrl, {
-        track: remoteTrackOption
+        track: [ remoteTrackOption ]
       }).then(() => {
         return Promise.all([
           git.config(cwd, { get: `remote.${remoteName}.url` }),
@@ -156,7 +158,7 @@ describe('remote', () => {
       git.remote.add(cwd, remoteName, remoteUrl, {
         master: remoteMasterOption
       }).then(() => {
-        return fs.readFile(path.resolve(cwd, `.git/refs/remotes/${remoteName}/HEAD`))
+        return fsp.readFile(path.resolve(cwd, `.git/refs/remotes/${remoteName}/HEAD`), 'utf8')
       }).then(refSpec => {
         const expectedRefSpec = `ref: refs/remotes/${remoteName}/${remoteMasterOption}`
 
