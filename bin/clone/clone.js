@@ -4,7 +4,7 @@
 
 // Dependencies
 
-const nogit = require('../../lib')
+const git = require('../../lib')
 
 /**
  * The command format itself
@@ -45,9 +45,9 @@ exports.builder = {
  */
 exports.handler = function (argv) {
 
-  nogit.clone(argv.repository, argv.directory, argv)
+  git.clone(argv.repository, argv.directory, argv)
     .catch(console.log.bind(console))
-    .done((repository) => {
+    .then((repository) => {
       console.log('Cloned repository to', argv.directory);
     })
 }
