@@ -3,7 +3,7 @@
 'use strict'
 
 // Dependencies
-const nogit = require('../../lib')
+const git = require('../../lib')
 
 
 /**
@@ -33,6 +33,6 @@ exports.builder = {
 
 
 exports.handler = function (argv) {
-  nogit.revList(argv.commit, argv)
+  git.revList(argv.commit, argv)
     .catch(console.log.bind(console))
 }
