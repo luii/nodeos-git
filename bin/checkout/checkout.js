@@ -3,7 +3,7 @@
 'use strict'
 
 // Dependencies
-const nogit = require('../../lib')
+const git = require('../../lib')
 
 /**
  * The command format itself
@@ -35,9 +35,7 @@ exports.builder = {}
  */
 exports.handler = (argv) => {
 
-  nogit.checkout(argv.branch)
+  git.checkout(argv.branch)
     .catch(() => console.log.bind(console))
-    .done(branch => {
-      console.log(`Checkout ${branch}`);
-    })
+    .then(console.log)
 }
