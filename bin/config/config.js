@@ -3,7 +3,7 @@
 'use strict'
 
 // Dependencies
-const nogit = require('../../lib')
+const git = require('../../lib')
 
 /**
  * The command format itself
@@ -40,7 +40,7 @@ exports.builder = {
  */
 exports.handler = function (argv) {
 
-  nogit.config(argv)
-    .catch(console.log.bind(console))
-    .done(val => console.log)
-}
+  git.config(argv)
+     .catch(console.log.bind(console))
+     .then(console.log)
+  }
